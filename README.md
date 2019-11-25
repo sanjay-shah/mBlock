@@ -1,7 +1,13 @@
-# medical-record-base
+# mBlock - medical-record-base
+
+This is a doctor-patient medical record app, a simple blockchain identity app for creating medical record to share with doctors or request medical reports from patients. Patients own medical record and has the ability to share with specific doctors or providers. Patients can grant or revoke access to their records anytime.
+
+It uses solidity smart contracts on ethereum testnet to create, request and grant access to medical record.
 
 ## Project setup
 ```
+git clone https://github.com/sanjay-shah/mBlock.git
+cd mBlock
 npm install
 ```
 
