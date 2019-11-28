@@ -1,11 +1,7 @@
 <template>
   <div class="container">
     <div class="b-row">
-      <div>
-        <h5>
-          {{label_title}} {{label_account_address}}
-        </h5>
-        <hr>  
+      <div> 
         <div>
           <label for="fullName">
             {{label_fullName}}
@@ -40,51 +36,17 @@
           />
         </div>
         <div>
-          <label for="heightInches">
-            {{label_heightInches}}
+          <label for="licenseNumbers">
+            {{label_licenseNumbers}}
           </label>
+          <br>
           <b-form-input
-            id="heightInches"
-            v-model="heightInches"
-            type="text"
-            placeholder="165"
+            id="licenseNumbers"
+            v-model="licenseNumbers"
+            rows="3"
+            placeholder='XYZ12349875'
           />
         </div>
-        <div>
-          <label for="weightPounds">
-            {{label_weightPounds}}
-          </label>
-          <b-form-input
-            id="weightPounds"
-            v-model="weightPounds"
-            type="text"
-            placeholder="160"
-          />
-        </div>
-        <div>
-          <label for="bloodGroup">
-            {{label_bloodGroup}}
-          </label>
-          <b-form-input
-            id="bloodGroup"
-            v-model="bloodGroup"
-            type="text"
-            placeholder="A+"
-          />
-        </div>
-      </div>
-      <div>
-        <label for="healthNumbers">
-          {{label_healthNumbers}}
-        </label>
-        <br>
-        <b-form-textarea
-          id="healthNumbers"
-          v-model="healthNumbers"
-          rows="3"
-          placeholder='Blood Pressure 120/80, Heartrate 80, Blood Suger 100'
-        />
-      </div>
     </div>
     <div class="b-row">
       <div>
@@ -101,66 +63,94 @@
       </div>
     </div>
     <hr>
-    <div class="b-row">
-      <div>
+    <b-row>
+      <b-col>
         <b-button
           :variant="'primary'"
           @click="createMedicalRecord"
         >
-          {{ button_createStatus }}
+          {{ label_button_create }}
         </b-button>
-      </div>
-    </div>
+      </b-col>
+      <b-col>
+        <b-button
+          :variant="'danger'"
+          @click="createMedicalRecord"
+        >
+          {{ label_button_delete }}
+        </b-button>
+      </b-col>
+      <b-col>
+        <b-button
+          :variant="'success'"
+          @click="createMedicalRecord"
+        >
+          {{ label_button_share }}
+        </b-button>
+      </b-col>
+    </b-row>
   </div>
+</div>
 </template>
 
 <script>
 import web3 from '../contracts/web3';
-// import medicalRecord from './contracts/medicalRecordInstance';
-//import medicalRecordBase from './contracts/medicalRecordBaseInstance';
+//import medicalRecord from '../contracts/medicalRecordInstance';
+import medicalRecordBase from '../contracts/medicalRecordBaseInstance';
 
 export default {
   name: 'APP',
   data() {
     return {
       label_title: 'Medical Record',
-      label_account_address: web3.givenProvider.selectedAddress,
+      //label_account_address: web3.givenProvider.selectedAddress,
       label_fullName: 'Full Name',
       label_dateOfBirth: 'Date Of Birth',
       label_gender: 'Gender',
       label_postalAddress: 'Postal Address',
-      label_heightInches: 'Height(Inches)',
-      label_weightPounds: 'Weight(Pounds)',
-      label_bloodGroup: 'BloodGroup',
-      label_healthNumbers: 'Health Numbers (Blood pressure, Heart Rate, Blood Suger etc)',
-      healthNumbers: '',
-      button_createStatus: 'CREATE/SHARE MEDICAL RECORD',
-    };
+      label_licenseNumbers: 'License Numbers (Board Registered Number)',
+      fullName: '',
+      dateOfBirth: '',
+      gender: '',
+      postalAddress: '',
+      licenseNumbers: '',
+      label_button_create: 'CREATE/EDIT DOCTOR PROFILE',
+      label_button_delete: 'DELETE DOCTOR PROFILE',
+      label_button_share: 'REQUEST MEDICAL RECORD',
+      medicalR: ''
+    }
+  },
+  computed: {
+    //label_account_address: function() {
+    //  return web3.givenProvider.selectedAddress
+    //}
   },
   beforeMount() {
     //console.log("beforeMount")
     //console.log("address://")
     //console.log(web3.givenProvider.selectedAddress)
-    
-    // get medicalRecordBase method: getMedicalRecord()
-    //medicalRecordBase.methods
-    //  .getMedicalRecord(web3.givenProvider.selectedAddress)
-    //  .call()
-    //  .then((medicalRecord) => {
-    //    console.log(medicalRecord);
-    //  });
+
   },
   methods: {
-    createMedicalRecord() {
-      //console.log("createMedicalRecord")
+    label_account_address: function() {
+      return web3.givenProvider.selectedAddress
     },
-    handleSubmit() {
-      //console.log("handleSubmit")
+    createDoctorsInfo() {
+      
+    },
+    getMedicalRecord() {
+      this.label_account_address = web3.givenProvider.selectedAddress
+      medicalRecordBase.methods
+        .getMedicalRecord('Address of the patient')
+        .call()
+        .then((medicalRecord) => {
+          this.medicalR = medicalRecord
+        });
     },
     handleFinalize() {
       //console.log("handleFinalize")
     },
-  },
+  }
 }
 </script>
 

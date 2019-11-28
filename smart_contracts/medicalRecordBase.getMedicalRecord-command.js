@@ -1,0 +1,1 @@
+medicalRecordBase.methods.getMedicalRecord(web3.givenProvider.selectedAddress).call().then((medicalRecord) => {console.log(medicalRecord)})

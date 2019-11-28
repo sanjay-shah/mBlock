@@ -2,7 +2,7 @@
   <div class="patients">
 		<div>
 		<b-jumbotron>
-		<template v-slot:header>Medical Record Base</template>
+		<template v-slot:header>mBlock - Medical Record Base</template>
 
 		<template v-slot:lead>
 		This is a doctor-patient medical record app, a simple blockchain identity app for creating medical record to share with doctors or request medical reports from patients. Patients own medical record and has the ability to share with specific doctors or providers. Patients can grant or revoke access to their records anytime.

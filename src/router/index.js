@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Doctors from '@/components/Doctors'
-import Patients from '@/components/Patients'
+import Doctors from '@/components/DoctorsDashboard'
+import Patients from '@/components/PatientDashboard'
+import MedicalRecord from '@/components/MedicalRecord'
 
 Vue.use(Router)
 
@@ -24,6 +25,12 @@ export default new Router({
             path: '/patients',
             name: 'Patients',
             component: Patients,
+            props: true
+        },
+        {
+            path: '/medical-record',
+            name: 'MedicalRecord',
+            component: MedicalRecord,
             props: true
         }
     ]

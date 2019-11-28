@@ -5,7 +5,7 @@ contract MedicalRecordBase{
     
     mapping(address => MedicalRecord) private medicalRecords;
    
-    function createMedicalRecord (
+    function createMedicalRecord(
         string memory _fullName,
         string memory _dateOfBirth,
         string memory _sex,
@@ -14,7 +14,7 @@ contract MedicalRecordBase{
         string memory _postalAddress,
         string memory _bloodGroup,
         string memory _healthNumbers
-        ) public{
+        ) public returns(string memory){
         // set the new instance
         MedicalRecord newMedicalRecord = new MedicalRecord(
             msg.sender, 
@@ -29,6 +29,7 @@ contract MedicalRecordBase{
         );
         // set the new medicalRecords links with msg.sender
         medicalRecords[msg.sender] = newMedicalRecord;
+        return 'Medical Record Created';
     }
     
     function getMedicalRecord(address _medicalRecordOwnner) public view returns(string memory){
@@ -102,6 +103,7 @@ contract MedicalRecord {
         postalAddress = _postalAddress;
         bloodGroup = _bloodGroup;
         healthNumbers = _healthNumbers;
+        accessGranted[_owner] = true;
         emit MedicalRecordCreated(_owner, _fullName);
     }
     
@@ -148,7 +150,8 @@ contract MedicalRecord {
             //emit MedicalRecordReadBySomeoneElse(owner, _caller, fullName, accessRequested[_caller]);
             return fullName;
         } else {
-            return "Please request access or wait for approval.";
+            return 'Please request access or wait for approval';
         }
     }
+    
 }
