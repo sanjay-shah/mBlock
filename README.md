@@ -10,7 +10,7 @@ git clone https://github.com/sanjay-shah/mBlock.git
 cd mBlock
 npm install
 ```
-
+Install MetaMask https://metamask.io/
 ### Compiles and hot-reloads for development
 ```
 npm run serve
