@@ -4,6 +4,8 @@ This is a doctor-patient medical record app, a simple blockchain identity app fo
 
 It uses solidity smart contracts on ethereum testnet to create, request and grant access to medical record.
 
+View live App http://206.189.211.129/
+
 ## Project setup
 ```
 git clone https://github.com/sanjay-shah/mBlock.git
