@@ -4,7 +4,7 @@
       <div> 
         <div>
           <label for="fullName">
-            {{label_fullName}}
+            {{label_fullName}} {{medicalR}}
           </label>
           <b-form-input
             id="fullName"
@@ -168,7 +168,7 @@ export default {
     //console.log("beforeMount")
     //console.log("address://")
     //console.log(web3.givenProvider.selectedAddress)
-
+    this.getMedicalRecord()
   },
   methods: {
     createMedicalRecord() {

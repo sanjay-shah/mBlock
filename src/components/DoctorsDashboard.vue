@@ -46,9 +46,9 @@
 				>
 					<b-card-text><h6>Received <b-badge variant="danger">5 new</b-badge> <b-link>View all</b-link></h6></b-card-text>
 					<b-list-group flush>
-						<b-list-group-item>Mr. Nakmoto <b-link>Grant</b-link></b-list-group-item>
-						<b-list-group-item>Mr. Buterin <b-link>Grant</b-link></b-list-group-item>
-						<b-list-group-item>Mr. Wilcox <b-link>Grant</b-link></b-list-group-item>
+						<b-list-group-item>Mr. Nakmoto <b-link>View</b-link></b-list-group-item>
+						<b-list-group-item>Mr. Buterin <b-link>View</b-link></b-list-group-item>
+						<b-list-group-item>Mr. Wilcox <b-link>View</b-link></b-list-group-item>
 					</b-list-group>
 				</b-card>
 			</b-col>
